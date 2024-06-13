@@ -1,4 +1,6 @@
 # Kaspersky-Valley-of-Technologies-2024-Linux-development-write-up
+____
+## Задача 1
 Нам известно, что нужные нам файлы находятся в каналах процесса и окружении, однако для начала необходимо узнать его `pid`:
 ```shell
 [midori@fedora ~]$ pidof /usr/bin/firewall
@@ -27,4 +29,12 @@ cgroup       cpu_resctrl_groups  fd       ksm_stat           maps       net     
 [midori@fedora ~]$ sudo cat /proc/707/environ
 LANG=en_US.UTF-8PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/binUSER=rootINVOCATION_ID=9487e0dc37d04e55b2a861dbc955cc73KLTV_KEY=/usr/share/applications/mimeinfo.cacheSYSTEMD_EXEC_PID=707MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/kl-firewall.service/memory.pressureMEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=JOURNAL_STREAM=8:7532
 ```
-А вот и переменная `KLTV_KEY=/usr/share/applications/mimeinfo.cache`. Задание решено.
+А вот и переменная `KLTV_KEY=/usr/share/applications/mimeinfo.cache`. Осталось лишь скачать файлы и задание будет решено:
+```shell
+user@MacBook-Air-Polzovatel ~ % scp -P 2222 midori@localhost:/usr/share/alsa/alsa.cnf /Users/user/Desktop/CTF
+midori@localhost's password: 
+alsa.cnf                                      100%   96    57.9KB/s   00:00    
+user@MacBook-Air-Polzovatel ~ % scp -P 2222 midori@localhost:/usr/share/applications/mimeinfo.cache /Users/user/Desktop/CTF
+midori@localhost's password: 
+mimeinfo.cache                                100%   32     0.4KB/s   00:00
+```
