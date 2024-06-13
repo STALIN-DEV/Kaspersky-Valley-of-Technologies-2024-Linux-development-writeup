@@ -1,1 +1,1 @@
-# Kaspersky-Tech-Camp-2024-Linux-development-writeup
+# Kaspersky-Valley-of-Technologies-2024-Linux-development-write-up
